@@ -60,7 +60,7 @@ public class Pgrf1Frame extends JFrame {
 private void draw(){
         img.getGraphics().fillRect(0, 0, img.getWidth(),img.getHeight());
         for (int i=0; i<100;i++){
-        img.setRGB(200,200, Color.RED.getRGB());
+        img.setRGB(200+i,200, Color.RED.getRGB());
         }
 
 
