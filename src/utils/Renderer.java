@@ -40,21 +40,52 @@ public class Renderer {
                 drawPixel(x, y);
             }
 
-
-            //ridici osa X
-            //otoceni
-            //float k .. q
-            // for(..){
-            // drawPixel(x,y)
-            //}
-
-        } else {
-            //ridici osa Y
-
-
         }
 
 
+    }
+
+    public void LineDda(int x1, int y1, int x2, int y2) {
+        float k, g, h; //G=prirustek X, H=
+        int dy = y2 - y1;
+        int dx = x2 - x1;
+        k = dy / (float) dx;
+
+        //urceni ridici osy
+        if (Math.abs(dx) > Math.abs(dy)) {
+            g = 1;
+            h = k;
+            if (x1 > x2) {
+                int temp = x1;
+                x1 = x2;
+                x2 = temp;
+                temp = y1;
+                y1 = y2;
+                y2 = temp;
+
+            } else {
+                g = 1 / k;
+                h = 1;
+                if (y1 > y2) { //otoceni
+                    int temp = x1;
+                    x1 = x2;
+                    x2 = temp;
+                    temp = y1;
+                    y1 = y2;
+                    y2 = temp;
+
+                }
+            }
+
+            float x = x1;
+            float y = y1;
+            int max = Math.max(Math.abs(dx), Math.abs(dy));
+            for (int i = 0; i <= max; i++) {
+                drawPixel(Math.round(x), Math.round(y));
+                x+=g;
+                y+=h;
+            }
+        }
     }
 }
 
